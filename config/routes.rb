@@ -1,4 +1,11 @@
 PjTracker::Application.routes.draw do
+
+
+  resources :projects
+
+  devise_for :users
+
+	root :to => "home#index"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
