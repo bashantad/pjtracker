@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @project.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @project.description %>
+</p>
+
+<p>
+  <b>Startdate:</b>
+  <%= @project.startdate %>
+</p>
+
+<p>
+  <b>Deadline:</b>
+  <%= @project.deadline %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @project.status %>
+</p>
+
+<p>
+  <b>Project Members</b>
+   <% @project.users.each do |member| %>
+    <ul>
+      <li><%= check_box_tag 'project[user_ids][]', member.id -%>
+             <%=  member.email -%></li>
+    </ul>
+    <% end %>
+</p>
+
+
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %>
+
+
+<h2>Tasks</h2>
+
