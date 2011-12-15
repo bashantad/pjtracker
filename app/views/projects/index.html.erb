@@ -1,6 +1,6 @@
+<%= link_to 'Add new Project', new_project_path %>
 <h1>Listing projects</h1>
-
-<table>
+<table class = "project_table">
   <tr>
     <th>Name</th>
     <th>Description</th>
@@ -9,17 +9,15 @@
     <th>Status</th>
     <th></th>
     <th></th>
-    <th></th>
   </tr>
 
 <% @projects.each do |project| %>
   <tr>
-    <td><%= project.name %></td>
+    <td><%= link_to project.name, project %></td>
     <td><%= project.description %></td>
     <td><%= project.startdate %></td>
     <td><%= project.deadline %></td>
     <td><%= project.status %></td>
-    <td><%= link_to 'Show', project %></td>
     <td><%= link_to 'Edit', edit_project_path(project) %></td>
     <td><%= link_to 'Destroy', project, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
@@ -28,4 +26,4 @@
 
 <br />
 
-<%= link_to 'New Project', new_project_path %>
+

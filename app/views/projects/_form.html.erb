@@ -32,11 +32,11 @@
     <%= f.text_field :status %>
   </div>
   <div class="field">
-    <h4>Assign members</h4>
+    <%= f.label :Assign_members %><br />
       <% @users = User.all %>
       <% @users.each do |member| %>
       <ul>
-        <li><input type = "checkbox" name = "project[user_ids][]" value="<%= member.id %>" /><%= member.email%></li>
+        <li><%= check_box_tag 'project[user_ids][]', member.id %> <%= member.email%></li>
       </ul>
       <% end %>
    </div>

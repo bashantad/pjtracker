@@ -9,7 +9,7 @@
 body {
   background-color: #4B7399;
   font-family: Verdana, Helvetica, Arial;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 a img {
@@ -80,4 +80,27 @@ a {
 
 .error_messages ul {
   margin: 0;
+}
+
+#task_form {
+  display: none;
+}
+
+#show_tasks {
+  text-align: center;
+}
+
+#task_table {
+    background-color: #F5CED7;
+}
+
+#task_table td {
+  border-color: #7D797A;
+}
+.project_table {
+  background-color: #7D797A;
+} 
+
+#add_task a {
+  font-size: 20px;
 }

@@ -1,44 +1,70 @@
 <p id="notice"><%= notice %></p>
+<h1>Project</h1>
+<table width="100%" class="project_table">
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Startdate</th>
+    <th>Deadline</th>
+    <th>Status</th>
+  <tr>
+    <tr>
+       <td><%= @project.name %></td>
+       <td><%= @project.description %></td>
+       <td> <%= @project.startdate %></td>
+       <td><%= @project.deadline %></td>
+       <td><%= @project.status %></td>
+     <tr>
+</table>
+<br />
 
-<p>
-  <b>Name:</b>
-  <%= @project.name %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @project.description %>
-</p>
-
-<p>
-  <b>Startdate:</b>
-  <%= @project.startdate %>
-</p>
-
-<p>
-  <b>Deadline:</b>
-  <%= @project.deadline %>
-</p>
-
-<p>
-  <b>Status:</b>
-  <%= @project.status %>
-</p>
-
-<p>
-  <b>Project Members</b>
-   <% @project.users.each do |member| %>
-    <ul>
-      <li><%= check_box_tag 'project[user_ids][]', member.id -%>
-             <%=  member.email -%></li>
-    </ul>
-    <% end %>
-</p>
-
-
-<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Edit Project', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>
 
+<div id = "show_tasks">
+  <fieldset>
+    <legend><h3>All Tasks of this project</h3></legend>
+<table id = "task_table" width = "100%">
+    <tr>
+      <th>Task title</th>
+      <th>Task description</th>
+      <th>Assigned user</th>
+      <th>Task status</th>
+      <th></th>
+    </tr>
+    <%= render @tasks %>
+</table>
+</div>
 
-<h2>Tasks</h2>
+</fieldset>
+<div id = "add_task">
+<%= link_to 'Add New Task', "#" %>
+</div>
+<div id = "task_form">
+<%= form_for([@project,Task.new], :remote => true) do |t| %>
+  <div class="field">
+    <%= t.label :title %><br />
+    <%= t.text_field :title %>
+  </div>
+  <div class="field">
+    <%= t.label :body %><br />
+    <%= t.text_area :body %>
+  </div>
+  <div class="field">
+     <%= t.label :Assign_member %><br />
+   <%= select("task", "user_id", @project.users.collect {|member| [ member.email, member.id ] }, {:include_blank => 'Select Members'}) %>
+  </div>
+   <div class="field">
+     <%= t.label :status %><br />
+     <%= t.text_field :status %>
+   </div>
+  <div class="actions">
+    <%= t.submit %>
+  </div>
+<% end %>
+
+
+
+
+
 

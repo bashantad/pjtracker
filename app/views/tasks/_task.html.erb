@@ -1,0 +1,11 @@
+<% user = User.find(task.user_id) %>
+  <tr>
+    <td><%= task.title %></td>
+    <td><%= task.body %></td>
+    <td><%= user.email %></td>
+    <td><%= task.status %></td>
+    <td><%= link_to 'Delete Task', "#" %> </td>
+  </tr>
+
+
+

@@ -1,7 +1,6 @@
 class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
-  layout "application"
   before_filter :authenticate_user!
   
   def index
@@ -18,6 +17,7 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
     #@users = ProjectsUser.where(:project_id =>params[:id])
+    @tasks = @project.tasks
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @project }
